@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<form action="/convert/new" method="POST">
+    <div>
+        <h1>Forex Converter</h1>
+        
+        <div>
+            <div>
+                <label for="from-code">Convert from</label>
+                <select id="from-code" name="from-code" required>
+                    <option selected disabled value>Choose...</option>
+                    {% for code in codes %}
+                    <option>{{ code }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="to">Convert to</label>
+                <select id="to" class="custom-select" name="to" required>
+                    <option selected disabled value>Choose...</option>
+                    {% for code in codes %}
+                    <option>{{ code }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <div>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+            </div>
+        </div>
+        <input type="submit" value="Convert">
+    </div>
+</form>
+{% endblock %}
